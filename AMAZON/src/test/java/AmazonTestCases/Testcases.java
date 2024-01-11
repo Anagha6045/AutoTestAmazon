@@ -2,26 +2,38 @@ package AmazonTestCases;
 
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import AutomationCore.BaseClass;
 
 public class Testcases extends BaseClass 
 {
 	WebDriver driver;
+	
+	
 	@BeforeMethod
 	public void intialization() throws Exception
 	{
 		driver = browserIntialization("Chrome");
+	//	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2));
 	//	driver.get("https://www.amazon.in/"); 
 		
 	}
-   @Test
+   //@Test
 	public void tc01()
 	{
 		System.out.println("Testcase1");
@@ -43,95 +55,184 @@ public class Testcases extends BaseClass
 	     driver.findElement(By.id("single-input-field")).sendKeys("Hai hello");
 	     driver.findElement(By.id("button-one")).click();
 	     driver.findElement(By.id("single-input-field")).clear();
+	     //check box
 	     driver.findElement(By.xpath("//a[text()='Checkbox Demo']")).click();
 	     driver.findElement(By.id("check-box-one")).click();
 	     driver.findElement(By.id("check-box-two")).click();
+	     //radio button
 	     driver.findElement(By.xpath("//a[text()=\"Radio Buttons Demo\"]")).click();
 	     driver.findElement(By.id("inlineRadio1")).click();
-	     
 	     driver.findElement(By.xpath("//a[text()='Select Input']")).click();
-	     
+	     //drop down
 	      WebElement drpdwn=driver.findElement(By.id("single-input-field"));
-	      
 	      Select obj1= new Select(drpdwn);
-	     // obj1.selectByVisibleText("Red");
+	      obj1.selectByVisibleText("Red");
 	      obj1.selectByValue("Green");
-	      
+	      //isEnabled
 	      boolean status=driver.findElement(By.id("button-first")).isEnabled();
 	      System.out.println(status);
 	      boolean state=driver.findElement(By.id("button-first")).isDisplayed();
 	      System.out.println(state);
-	      
+	      //isSelected
+	      //collections : set, list, arraylist
 	     List<WebElement> elements= driver.findElements(By.xpath("//li[@class='list-group-item']"));
 	     System.out.println(elements.size());
-	
+	     Iterator<WebElement> itr_obj=elements.iterator();
+			while(itr_obj.hasNext())
+			{
+				String value1= itr_obj.next().getText();
+				System.out.println(value1);
+			}
+   
+	}
+   
+   // Action class and its implementation
+	//@Test
+	  public void drag_Drop_Tc02()
+	  { 	   
+		 driver.navigate().to("https://selenium.obsqurazone.com/index.php");
+         driver.navigate().refresh();
+	     WebElement others_button=driver.findElement(By.id("others"));
+	     others_button.click();
+	     WebElement source = driver.findElement(By.xpath("(//div[@id='todrag']//child::span)[1]"));
+	     WebElement destination = driver.findElement(By.id("mydropzone"));
+	     Actions action=new Actions(driver);
+	   //action.sendKeys(Keys.ENTER).build().perform();
+	   //action.sendKeys(others_button, Keys.ENTER).build().perform();
+	         //.build().perform() is must to perform actions using action class methods.
+	   //action.contextClick().build().perform();// normal double click on web page
+	     action.dragAndDrop(source, destination).build().perform(); 
+	   //action.doubleClick(others_button).build().perform();
+	     
+	     driver.navigate().to("https://demo.guru99.com/test/guru99home/");
+	     driver.switchTo().frame("a077aa5e");
+	     boolean img_status= driver.findElement(By.xpath("//img[@src='Jmeter720.png']")).isDisplayed();
+	     System.out.println(img_status);
+	     driver.switchTo().defaultContent();
+	  }
+	  //multiple window handling
+	//@Test
+	public void windowHandlingTc03() throws InterruptedException
+	{
+		driver.get("https://www.amazon.in/?ref_=nav_signin");
+		driver.navigate().refresh();
+		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Iphone 15");
+		Actions actioncl =new Actions(driver);
+		actioncl.sendKeys(Keys.ENTER).build().perform();
+		driver.findElement(By.xpath("(//span[text()='iPhone 15 (128 GB) - Blue' ])[1]")).click();
+		
+		String parent_tab=driver.getWindowHandle(); //Get the handle of the parent window 
+		Set<String> handles= driver.getWindowHandles();//Get the handles of all the windows that are currently open using the command: 
+		                                               //which returns the set of handles.
+		Iterator<String> it= handles.iterator();
+		String parent=it.next();//1st entry of the set will be parent window
+		String childtab=it.next();//next pointed window will be the child window which is saved to the string 'childtab'
+		driver.switchTo().window(childtab);
+		
+		
+		
+		WebElement AddCartbtn= driver.findElement(By.xpath("//input[@id='add-to-cart-button' and @name='submit.add-to-cart']"));
+		//Thread.sleep(2000);    --- instead of this
+		wait.until(ExpectedConditions.visibilityOf(AddCartbtn));
+		driver.switchTo().window(parent_tab);// after performing action on child tab it points back to parent tab
+		driver.navigate().refresh();
 	}
 	//@Test
-	  public void tc02()
-	  { System.out.println("Testcase2");
-	  //driver.navigate().to("https://www.amazon.in/");
-	  driver.navigate().to("https://www.flipkart.com/");
-	  driver.navigate().refresh(); driver.navigate().to("https://www.myntra.com/");
-	  driver.navigate().back(); driver.navigate().refresh();
-	  }
-	//@Test
-	public void tc03()
+	public void tc04()
 	{
-		System.out.println("Testcase3");
+		System.out.println("Testcase");
 		driver.navigate().to("https://demo.guru99.com/test/newtours/");
         driver.findElement(By.name("userName")).click();
 		driver.findElement(By.name("userName")).sendKeys("Anagha@123");
 		driver.findElement(By.name("password")).click();
 		driver.findElement(By.name("password")).sendKeys("12234555");
 		driver.findElement(By.name("password")).clear();
-		
 		//driver.findElement(By.name("submit")).click();
 		//driver.quit();
-		
 	}
+
 	//@Test
-	public void tc04()
-	{
-		System.out.println("Testcase4");
-		driver.navigate().to("https://demo.guru99.com/test/newtours/");
-       WebElement user_Name=driver.findElement(By.name("userName"));
-       WebElement passWord=driver.findElement(By.name("password"));
-		user_Name.click();
-		user_Name.sendKeys("qwerty");	
-		passWord.click();
-		passWord.sendKeys("134334546");
-		passWord.clear();
-		
-		}
-	//@Test
-	public void tc05()
-	{
-		driver.navigate().to("https://www.google.com/");
-		WebElement search_box=driver.findElement(By.xpath("//*[@id=\"APjFqb\"]"));
-		WebElement search_lens=driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[3]/div[3]"));
-		search_lens.submit();
-		//search_box.click();
-		//search_box.sendKeys("Java Tutorial Javatpoint");
-		//search_box.submit();
-		
-	}
-	//@Test
-	public void tc06()
-	{
-		System.out.println("Testcase1");
-		driver.navigate().to("https://selenium.obsqurazone.com/simple-form-demo.php");
-		WebElement input_field = driver.findElement(By.id("single-input-field"));
-		input_field.click();
-		input_field.sendKeys("Hai");
-	//	driver.close();//close current window
-	//	driver.quit();//close all the tabs
-		
-	}
-	//@Test
-	public void alertsInSelenium()
+	
+	public void alertsInSelenium() throws InterruptedException
 	{
 		driver.navigate().to("https://selenium.obsqurazone.com/javascript-alert.php");
-	    driver.findElement(By.xpath("/html/body/section/div/div/div[2]/div[1]/div/div[2]/button")).click();
-	    driver.switchTo().alert().accept();//ok clickavum dismiss()-cancel
+	    driver.findElement(By.xpath("(//button[text()='Click me!'])[1]")).click();
+	    Thread.sleep(2000);
+	    String message =driver.switchTo().alert().getText();
+	    System.out.println(message);
+	    driver.switchTo().alert().accept();//ok clickavum //instead of accept() --dismiss()-cancel
+	    
+	    driver.findElement(By.xpath("(//button[text()='Click me!'])[2]")).click();
+	    Thread.sleep(2000);
+	    driver.switchTo().alert().dismiss();
+	  //  driver.findElement(By.xpath("//button[text()='Click for Prompt Box']")).click();
+	  //  Alert alert=driver.switchTo().alert();
+	   // alert.sendKeys("Hai I am Anagha");
+	    
+	     
 	}
-}
+	
+	//@Test
+	public void handlingTables() throws InterruptedException
+	{
+		driver.navigate().to("https://selenium.obsqurazone.com/table-sort-search.php");
+		List <WebElement> rows = driver.findElements(By.xpath("//tr[@class='odd' or @class='even']"));
+		System.out.println(rows.size());//assertion
+		driver.findElement(By.xpath("//*[@id=\"dtBasicExample_filter\"]/label/input")).sendKeys("Bruno");
+	    Thread.sleep(2000);
+	    String name= driver.findElement(By.xpath("(//tr[@class='odd' ]//child::td)[1]")).getText();
+	    System.out.println(name); //assertion
+	   // driver.findElement(By.xpath("(//tr[@class='odd' ]//child::td)[1]")).click();
+	  /*  WebElement wb1= driver.findElement(By.xpath("(//tr[@class='odd' ]//child::td)[1]"));
+	    JavascriptExecutor jse= (JavascriptExecutor)driver;
+	    jse.executeScript("arguments[0].click();", wb1);*/
+	   // String startdate=driver.findElement(By.xpath("(//tr[@class='odd' ]//child::td)[5]")).getText();
+	   // System.out.println(startdate);//assertion
+	    WebElement wb2= driver.findElement(By.xpath("//a[text()='Table with Pagination']"));
+	    JavascriptExecutor jse= (JavascriptExecutor)driver;
+	    jse.executeScript("arguments[0].click();", wb2);
+	}
+	
+	//@Test
+	public void handlingScrollbar()
+	{
+		driver.navigate().to("https://selenium.obsqurazone.com/table-sort-search.php");
+		JavascriptExecutor jse =(JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,1000)", "");
+		
+	}
+	@Test
+	public void flipCartAddCartItem()
+	{
+		 driver.get("https://www.flipkart.com/");
+		 WebElement searchbar =driver.findElement(By.xpath("//input[@placeholder='Search for Products, Brands and More']"));
+		 searchbar.sendKeys("Acer Laptop");
+		 Actions action= new Actions(driver);
+	 
+		 action.sendKeys(Keys.ENTER).build().perform();
+		 driver.findElement(By.partialLinkText("Acer One Intel Core i3 11th Gen 1115G4 - (8 GB/512 GB SSD/Windows 11 Home) AO 14 Z 8-415 Thin and Ligh...")).click();
+	     
+		 driver.getWindowHandle();
+		 
+		 Set<String> handles = driver.getWindowHandles();
+		 Iterator<String> iterate= handles.iterator();
+		  String parent_tab=iterate.next();
+		  String child_tab1=iterate.next();
+		  
+		  driver.switchTo().window(child_tab1);
+		  WebElement addtocart= driver.findElement(By.xpath("//button[text()='Add to cart']"));
+		
+		  WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2));
+		  wait.until(ExpectedConditions.elementToBeClickable(addtocart));
+		  
+		
+		  //  driver.findElement(By.xpath("//button[text()='Add to cart']")).click();
+		  driver.switchTo().window(parent_tab);
+		   
+		
+		  driver.findElement(By.xpath("//span[text()='Cart']"));
+		  action.sendKeys(Keys.ENTER).build().perform();
+	}
+	
+	}
+

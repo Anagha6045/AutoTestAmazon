@@ -5,7 +5,7 @@
     <classes>
       <class name="AmazonTestCases.Testcases">
 		  <methods>
-			  <include name="tc01"></include>
+			  <include name="flipCartAddCartItem"></include>
 		  </methods>
       </class>
     </classes>

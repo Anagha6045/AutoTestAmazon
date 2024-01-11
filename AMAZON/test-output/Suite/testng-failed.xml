@@ -5,8 +5,8 @@
     <classes>
       <class name="AmazonTestCases.Testcases">
         <methods>
-          <include name="tc01"/>
           <include name="intialization"/>
+          <include name="alertsInSelenium"/>
         </methods>
       </class> <!-- AmazonTestCases.Testcases -->
     </classes>
