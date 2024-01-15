@@ -1,6 +1,7 @@
 package AmazonTestCases;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.Iterator;
@@ -17,23 +18,72 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
 import AutomationCore.BaseClass;
+import dev.failsafe.internal.util.Assert;
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 
 public class Testcases extends BaseClass 
 {
 	WebDriver driver;
+	SoftAssert softassert;
 	
 	
 	@BeforeMethod
 	public void intialization() throws Exception
 	{
 		driver = browserIntialization("Chrome");
-	//	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2));
-	//	driver.get("https://www.amazon.in/"); 
+		System.out.println("Before Method");
+		softassert =new SoftAssert();
+		
+	    driver.get("https://www.amazon.in/"); 
 		
 	}
-   //@Test
+	@AfterMethod
+	public void afterMethod()
+	{
+		System.out.println("Afterm Method");
+		driver.quit();
+	}
+	
+	@BeforeSuite
+	public void beforesSuitMethod()
+	{
+		System.out.println("Before Suit");
+	}
+	@BeforeTest
+	public void beforeTestMethod()
+	{
+	System.out.println("BeforeTest");
+	}
+	@BeforeMethod
+	public void beforeClassMethod()
+	{
+	System.out.println("beforeClass");
+	}
+	@AfterMethod
+	public void afterClassMethod()
+	{
+		System.out.println("afterClass");
+	}
+	@AfterTest
+	public void afterTestMethod()
+	{
+	System.out.println("AfterTest");
+	}
+	@AfterSuite
+	public void afterSuitMethod()
+	{
+		System.out.println("after Suit");
+	}
+	
+   @Test(priority = 1)
 	public void tc01()
 	{
 		System.out.println("Testcase1");
@@ -44,7 +94,11 @@ public class Testcases extends BaseClass
 		
 		WebElement element=driver.findElement(By.xpath("(//*[@class='card']//child::div)[2]"));
 		String tagname=element.getTagName();
+		String actualresult =element.getText();
+		System.out.println(actualresult +"-- check");
+		//org.testng.Assert.assertEquals(actualresult, "div");
 		System.out.println(tagname);
+		
 		
 		String attribute_value=driver.findElement(By.xpath("(//div[@class='card']//child::div)[2]")).getAttribute("class");
 		System.out.println(attribute_value);
@@ -70,8 +124,11 @@ public class Testcases extends BaseClass
 	      obj1.selectByValue("Green");
 	      //isEnabled
 	      boolean status=driver.findElement(By.id("button-first")).isEnabled();
+	      org.testng.Assert.assertEquals(status,true);
+	     
 	      System.out.println(status);
 	      boolean state=driver.findElement(By.id("button-first")).isDisplayed();
+	      softassert.assertEquals(state, true);
 	      System.out.println(state);
 	      //isSelected
 	      //collections : set, list, arraylist
@@ -83,11 +140,12 @@ public class Testcases extends BaseClass
 				String value1= itr_obj.next().getText();
 				System.out.println(value1);
 			}
+	softassert.assertAll();
    
 	}
    
    // Action class and its implementation
-	//@Test
+	@Test (priority = 2)
 	  public void drag_Drop_Tc02()
 	  { 	   
 		 driver.navigate().to("https://selenium.obsqurazone.com/index.php");
@@ -111,7 +169,7 @@ public class Testcases extends BaseClass
 	     driver.switchTo().defaultContent();
 	  }
 	  //multiple window handling
-	//@Test
+	//@Test (priority = 3)
 	public void windowHandlingTc03() throws InterruptedException
 	{
 		driver.get("https://www.amazon.in/?ref_=nav_signin");
@@ -119,7 +177,7 @@ public class Testcases extends BaseClass
 		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Iphone 15");
 		Actions actioncl =new Actions(driver);
 		actioncl.sendKeys(Keys.ENTER).build().perform();
-		driver.findElement(By.xpath("(//span[text()='iPhone 15 (128 GB) - Blue' ])[1]")).click();
+		driver.findElement(By.xpath("//span[text()='iPhone 14 Plus (128 GB) - Starlight']")).click();
 		
 		String parent_tab=driver.getWindowHandle(); //Get the handle of the parent window 
 		Set<String> handles= driver.getWindowHandles();//Get the handles of all the windows that are currently open using the command: 
@@ -133,11 +191,12 @@ public class Testcases extends BaseClass
 		
 		WebElement AddCartbtn= driver.findElement(By.xpath("//input[@id='add-to-cart-button' and @name='submit.add-to-cart']"));
 		//Thread.sleep(2000);    --- instead of this
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2));
 		wait.until(ExpectedConditions.visibilityOf(AddCartbtn));
 		driver.switchTo().window(parent_tab);// after performing action on child tab it points back to parent tab
 		driver.navigate().refresh();
 	}
-	//@Test
+	@Test (priority = 4)
 	public void tc04()
 	{
 		System.out.println("Testcase");
@@ -151,7 +210,7 @@ public class Testcases extends BaseClass
 		//driver.quit();
 	}
 
-	//@Test
+	@Test (priority = 5)
 	
 	public void alertsInSelenium() throws InterruptedException
 	{
@@ -172,7 +231,7 @@ public class Testcases extends BaseClass
 	     
 	}
 	
-	//@Test
+	@Test (priority = 6)
 	public void handlingTables() throws InterruptedException
 	{
 		driver.navigate().to("https://selenium.obsqurazone.com/table-sort-search.php");
@@ -193,7 +252,7 @@ public class Testcases extends BaseClass
 	    jse.executeScript("arguments[0].click();", wb2);
 	}
 	
-	//@Test
+	@Test (priority = 7)
 	public void handlingScrollbar()
 	{
 		driver.navigate().to("https://selenium.obsqurazone.com/table-sort-search.php");
@@ -201,7 +260,7 @@ public class Testcases extends BaseClass
 		jse.executeScript("window.scrollBy(0,1000)", "");
 		
 	}
-	@Test
+   // @Test  (priority = 8)
 	public void flipCartAddCartItem()
 	{
 		 driver.get("https://www.flipkart.com/");

@@ -1,20 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-10T08:11:07 IST" name="Suite" finished-at="2024-01-10T08:11:21 IST" duration-ms="14410">
+  <suite started-at="2024-01-15T20:11:31 IST" name="Suite" finished-at="2024-01-15T20:12:27 IST" duration-ms="56883">
     <groups>
     </groups>
-    <test started-at="2024-01-10T08:11:07 IST" name="Test" finished-at="2024-01-10T08:11:21 IST" duration-ms="14410">
+    <test started-at="2024-01-15T20:11:31 IST" name="Test" finished-at="2024-01-15T20:12:27 IST" duration-ms="56883">
       <class name="AmazonTestCases.Testcases">
-        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@158d2680]" started-at="2024-01-10T08:11:07 IST" name="intialization" finished-at="2024-01-10T08:11:10 IST" duration-ms="3580" status="PASS">
+        <test-method is-config="true" signature="beforesSuitMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:31 IST" name="beforesSuitMethod" finished-at="2024-01-15T20:11:31 IST" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforesSuitMethod -->
+        <test-method is-config="true" signature="beforeTestMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:31 IST" name="beforeTestMethod" finished-at="2024-01-15T20:11:31 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTestMethod -->
+        <test-method is-config="true" signature="beforeClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:31 IST" name="beforeClassMethod" finished-at="2024-01-15T20:11:31 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassMethod -->
+        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:31 IST" name="intialization" finished-at="2024-01-15T20:11:34 IST" duration-ms="3045" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- intialization -->
-        <test-method signature="flipCartAddCartItem()[pri:0, instance:AmazonTestCases.Testcases@158d2680]" started-at="2024-01-10T08:11:10 IST" name="flipCartAddCartItem" finished-at="2024-01-10T08:11:21 IST" duration-ms="10796" status="PASS">
+        <test-method signature="tc01()[pri:1, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:34 IST" name="tc01" finished-at="2024-01-15T20:11:40 IST" duration-ms="6232" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- flipCartAddCartItem -->
+        </test-method> <!-- tc01 -->
+        <test-method is-config="true" signature="afterClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:40 IST" name="afterClassMethod" finished-at="2024-01-15T20:11:40 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassMethod -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:40 IST" name="afterMethod" finished-at="2024-01-15T20:11:40 IST" duration-ms="192" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:40 IST" name="beforeClassMethod" finished-at="2024-01-15T20:11:40 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassMethod -->
+        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:40 IST" name="intialization" finished-at="2024-01-15T20:11:42 IST" duration-ms="2375" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intialization -->
+        <test-method signature="drag_Drop_Tc02()[pri:2, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:42 IST" name="drag_Drop_Tc02" finished-at="2024-01-15T20:11:57 IST" duration-ms="15011" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- drag_Drop_Tc02 -->
+        <test-method is-config="true" signature="afterClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:57 IST" name="afterClassMethod" finished-at="2024-01-15T20:11:57 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassMethod -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:57 IST" name="afterMethod" finished-at="2024-01-15T20:11:58 IST" duration-ms="171" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:58 IST" name="beforeClassMethod" finished-at="2024-01-15T20:11:58 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassMethod -->
+        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:11:58 IST" name="intialization" finished-at="2024-01-15T20:12:01 IST" duration-ms="2999" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intialization -->
+        <test-method signature="tc04()[pri:4, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:01 IST" name="tc04" finished-at="2024-01-15T20:12:05 IST" duration-ms="4206" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc04 -->
+        <test-method is-config="true" signature="afterClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:05 IST" name="afterClassMethod" finished-at="2024-01-15T20:12:05 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassMethod -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:05 IST" name="afterMethod" finished-at="2024-01-15T20:12:05 IST" duration-ms="174" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:05 IST" name="intialization" finished-at="2024-01-15T20:12:07 IST" duration-ms="2235" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intialization -->
+        <test-method is-config="true" signature="beforeClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:05 IST" name="beforeClassMethod" finished-at="2024-01-15T20:12:05 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassMethod -->
+        <test-method signature="alertsInSelenium()[pri:5, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:07 IST" name="alertsInSelenium" finished-at="2024-01-15T20:12:15 IST" duration-ms="7567" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- alertsInSelenium -->
+        <test-method is-config="true" signature="afterClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:15 IST" name="afterClassMethod" finished-at="2024-01-15T20:12:15 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassMethod -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:15 IST" name="afterMethod" finished-at="2024-01-15T20:12:15 IST" duration-ms="143" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:15 IST" name="beforeClassMethod" finished-at="2024-01-15T20:12:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassMethod -->
+        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:15 IST" name="intialization" finished-at="2024-01-15T20:12:18 IST" duration-ms="2645" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intialization -->
+        <test-method signature="handlingTables()[pri:6, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:18 IST" name="handlingTables" finished-at="2024-01-15T20:12:23 IST" duration-ms="5233" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- handlingTables -->
+        <test-method is-config="true" signature="afterClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:23 IST" name="afterClassMethod" finished-at="2024-01-15T20:12:23 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassMethod -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:23 IST" name="afterMethod" finished-at="2024-01-15T20:12:23 IST" duration-ms="179" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:23 IST" name="beforeClassMethod" finished-at="2024-01-15T20:12:23 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassMethod -->
+        <test-method is-config="true" signature="intialization()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:23 IST" name="intialization" finished-at="2024-01-15T20:12:26 IST" duration-ms="2505" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intialization -->
+        <test-method signature="handlingScrollbar()[pri:7, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:26 IST" name="handlingScrollbar" finished-at="2024-01-15T20:12:27 IST" duration-ms="1764" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- handlingScrollbar -->
+        <test-method is-config="true" signature="afterClassMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:27 IST" name="afterClassMethod" finished-at="2024-01-15T20:12:27 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassMethod -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:27 IST" name="afterMethod" finished-at="2024-01-15T20:12:27 IST" duration-ms="126" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:27 IST" name="afterTestMethod" finished-at="2024-01-15T20:12:27 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTestMethod -->
+        <test-method is-config="true" signature="afterSuitMethod()[pri:0, instance:AmazonTestCases.Testcases@459e9125]" started-at="2024-01-15T20:12:27 IST" name="afterSuitMethod" finished-at="2024-01-15T20:12:27 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuitMethod -->
       </class> <!-- AmazonTestCases.Testcases -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
