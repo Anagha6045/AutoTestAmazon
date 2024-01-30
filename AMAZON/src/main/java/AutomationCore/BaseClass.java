@@ -7,23 +7,24 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BaseClass {
+public class BaseClass
+{
 public WebDriver driver;
 @SuppressWarnings("deprecation")
 public WebDriver browserIntialization(String browserName) throws Exception
 {
 	if (browserName.equalsIgnoreCase("Chrome"))
 			{
-		driver = new ChromeDriver();
+     driver = new ChromeDriver();//chrome
 		
 			}
 	else if(browserName.equalsIgnoreCase("Edge"))
 	{
-		driver = new EdgeDriver();
+		driver = new EdgeDriver();//edge
 	}
 	else if(browserName.equalsIgnoreCase("Firefox"))
 	{
-		driver = new FirefoxDriver();
+		driver = new FirefoxDriver();//firefox
 	}
 	else
 	{

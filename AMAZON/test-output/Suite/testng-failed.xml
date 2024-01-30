@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="tests" name="Test(failed)">
+  <listeners>
+    <listener class-name="AmazonTestCases.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="Browser" value="Chrome"/>
     <classes>
       <class name="AmazonTestCases.Testcases">
         <methods>
-          <include name="afterClassMethod"/>
           <include name="windowHandlingTc03"/>
-          <include name="flipCartAddCartItem"/>
           <include name="beforeTestMethod"/>
           <include name="afterMethod"/>
-          <include name="beforeClassMethod"/>
+          <include name="afterSuitMethod"/>
           <include name="beforesSuitMethod"/>
           <include name="intialization"/>
-          <include name="afterSuitMethod"/>
           <include name="afterTestMethod"/>
         </methods>
       </class> <!-- AmazonTestCases.Testcases -->
